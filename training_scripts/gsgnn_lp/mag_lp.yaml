@@ -4,16 +4,17 @@ gsf:
   basic:
     model_encoder_type: rgcn
     graph_name: ogbn-mag
-    backend: gloo
+    backend: nccl
     ip_config: ip_list.txt
     part_config: null
     verbose: false
+    no_validation: true
     eval_frequency: 1000
   gnn:
     fanout: "20,15"
     num_layers: 2
     hidden_size: 256
-    use_mini_batch_infer: false
+    use_mini_batch_infer: true
   input:
     restore_model_path: null
   output:
@@ -23,8 +24,9 @@ gsf:
   hyperparam:
     dropout: 0.
     lr: 0.0005
-    num_epochs: 20
+    num_epochs: 5
     batch_size: 4000
+    eval_batch_size: 4000
     wd_l2norm: 0
   rgcn:
     num_bases: -1

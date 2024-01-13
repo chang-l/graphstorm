@@ -4,7 +4,7 @@ gsf:
   basic:
     model_encoder_type: rgcn
     graph_name: ogbn-mag
-    backend: gloo
+    backend: nccl
     ip_config: ip_list.txt
     part_config: null
     verbose: false
@@ -31,6 +31,7 @@ gsf:
     use_self_loop: true
     lp_decoder_type: dot_product
     sparse_optimizer_lr: 1e-2
+    use_wholegraph_sparse_emb: true
     use_node_embeddings: false
   link_prediction:
     num_negative_edges: 4
